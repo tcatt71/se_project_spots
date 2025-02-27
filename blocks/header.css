@@ -42,7 +42,7 @@
   margin: 0;
 }
 
-.header__button-secondary {
+.header__text-button {
   display: flex;
   gap: 8px;
   align-self: flex-start;
@@ -54,11 +54,11 @@
   margin: auto 0 0 0;
 }
 
-.header__button-secondary:hover {
+.header__text-button:hover {
   opacity: 1;
 }
 
-.header__button-large {
+.header__large-button {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -71,11 +71,11 @@
   border-radius: 8px;
 }
 
-.header__button-large:hover {
+.header__large-button:hover {
   background: #212121cc;
 }
 
-.header__button-large-icon {
+.header__large-button-icon {
   width: 12px;
   height: 12px;
   border-width: 2px;
