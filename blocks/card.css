@@ -1,0 +1,37 @@
+.card {
+  max-width: 413px;
+  height: 445px;
+}
+
+.card__image {
+  display: block;
+  width: 413px;
+  height: 413px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 0 12px;
+}
+
+.card__caption {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__description {
+  max-width: 360px;
+  font-size: 20px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.card__like-button {
+  height: 20px;
+  opacity: 40%;
+}
+
+.card__like-button:hover {
+  opacity: 1;
+}
