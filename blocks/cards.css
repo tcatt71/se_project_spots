@@ -1,8 +1,22 @@
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(413px, 1fr));
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, 413px);
+  justify-content: center;
   gap: 40px 20px;
   padding: 0 0 40px;
   border-bottom: 1px solid #21212166;
+}
+
+@media screen and (max-width: 892px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, 413px);
+  }
+}
+
+@media screen and (max-width: 583px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, 288px);
+    gap: 20px;
+    padding: 0 0 20px;
+  }
 }

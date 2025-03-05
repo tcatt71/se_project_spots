@@ -80,3 +80,47 @@
   border-width: 2px;
   border-color: #fcf5e5;
 }
+
+@media screen and (max-width: 892px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__avatar-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .profile__content {
+    align-items: center;
+    margin: 0 0 20px;
+  }
+
+  .profile__title {
+    margin: 0 0 6px;
+  }
+
+  .profile__description {
+    margin: 0 0 32px;
+  }
+
+  .profile__text-button {
+    align-self: center;
+  }
+
+  .profile__large-button {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 583px) {
+  .profile__avatar {
+    width: 80px;
+  }
+
+  .profile__title {
+    font-size: 20px;
+  }
+}

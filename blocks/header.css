@@ -4,10 +4,16 @@
   align-items: center;
   height: 46px;
   background-color: #ffffffcc;
-  margin-bottom: 34px;
+  margin: 0 0 34px;
 }
 
 .header__logo {
   width: 94px;
   height: 26px;
+}
+
+@media screen and (max-width: 892px) {
+  .header {
+    margin: 0 0 20px;
+  }
 }

@@ -3,3 +3,21 @@
   padding: 0 16px;
   margin: auto;
 }
+
+@media screen and (max-width: 1325px) {
+  .content {
+    max-width: 846px;
+  }
+}
+
+@media screen and (max-width: 892px) {
+  .content {
+    max-width: 413px;
+  }
+}
+
+@media screen and (max-width: 583px) {
+  .content {
+    max-width: 288px;
+  }
+}
