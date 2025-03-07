@@ -11,6 +11,11 @@
   gap: 20px;
 }
 
+.profile__avatar {
+  width: 190px;
+  border-radius: 8px;
+}
+
 .profile__content {
   display: flex;
   flex-direction: column;
