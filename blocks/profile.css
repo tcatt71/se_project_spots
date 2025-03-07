@@ -44,13 +44,14 @@
 .profile__text-button {
   display: flex;
   gap: 8px;
-  align-self: flex-start;
   background-color: transparent;
   opacity: 0.7;
+  font-weight: 500;
   line-height: 1;
   padding: 0;
   border: none;
   margin: auto 0 0 0;
+  cursor: pointer;
 }
 
 .profile__text-button:hover {
@@ -68,10 +69,11 @@
   padding: 18px 32px;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .profile__large-button:hover {
-  background: #212121cc;
+  opacity: 0.8;
 }
 
 .profile__large-button-icon {
@@ -98,15 +100,13 @@
   }
 
   .profile__title {
+    text-align: center;
     margin: 0 0 6px;
   }
 
   .profile__description {
+    text-align: center;
     margin: 0 0 32px;
-  }
-
-  .profile__text-button {
-    align-self: center;
   }
 
   .profile__large-button {
