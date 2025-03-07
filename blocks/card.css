@@ -1,3 +1,7 @@
+.card {
+  list-style: none;
+}
+
 .card__image {
   display: block;
   width: 413px;
