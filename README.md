@@ -11,3 +11,7 @@ This is the HTML and CSS of a webpage for a fictional web app called Spots. Spot
 - CSS
 - Flat BEM file structure
 - And a responsive design
+
+## Link to my video recording of my project
+
+[My video recording of my project](https://www.loom.com/share/3d0b0764b52243b582a22b87a913af68?sid=57d85e26-5b92-4bfb-a2e9-4b9245d66a05)
