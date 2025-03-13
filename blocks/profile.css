@@ -24,6 +24,7 @@
 
 .profile__title {
   font-size: 32px;
+  font-weight: 500;
   line-height: 1;
   text-overflow: ellipsis;
   overflow: hidden;
