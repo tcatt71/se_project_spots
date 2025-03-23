@@ -9,6 +9,39 @@
   </head>
   <body>
     <div class="page">
+      <div class="modal modal_opened">
+        <div class="modal__container">
+          <form action="#" class="form">
+            <button
+              class="form__button form__button_type_close"
+              type="button"
+            ></button>
+            <fieldset class="form__fieldset">
+              <legend class="form__title">Edit profile</legend>
+              <label for="name" class="form__label">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form__input"
+                placeholder="Type your name"
+              />
+              <label for="description" class="form__label">Description</label>
+              <input
+                type="text"
+                name="description"
+                id="description"
+                class="form__input"
+                placeholder="Describe yourself"
+              />
+            </fieldset>
+            <button class="form__button form__button_type_save" type="submit">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+
       <header class="header">
         <img src="images/logo.svg" alt="logo" class="header__logo" />
       </header>
