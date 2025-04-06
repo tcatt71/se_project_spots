@@ -8,7 +8,7 @@
   z-index: 1;
 }
 
-.modal_opened {
+.modal_is-opened {
   visibility: visible;
 }
 
