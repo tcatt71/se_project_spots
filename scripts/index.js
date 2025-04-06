@@ -41,6 +41,17 @@ const nameInput = editProfileModal.querySelector("#name");
 const profileJobElement = document.querySelector(".profile__description");
 const jobInput = editProfileModal.querySelector("#description");
 
+const profileFormElement = editProfileModal.querySelector(".form");
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileNameElement.textContent = nameInput.value;
+  profileJobElement.textContent = jobInput.value;
+  editProfileModal.classList.remove("modal_is-opened");
+}
+
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+
 profileTextBtn.addEventListener("click", function () {
   editProfileModal.classList.add("modal_is-opened");
   nameInput.value = profileNameElement.textContent;
