@@ -25,25 +25,22 @@ const initialCards = [
   },
 ];
 
+const profileTitleEl = document.querySelector(".profile__title");
+const profileDescriptionEl = document.querySelector(".profile__description");
 const profileTextBtn = document.querySelector(".profile__text-button");
+const profileLargeBtn = document.querySelector(".profile__large-button");
+
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(
   ".form__button_type_close"
 );
-
-const profileLargeBtn = document.querySelector(".profile__large-button");
-const newPostModal = document.querySelector("#new-post-modal");
-const newPostCloseBtn = newPostModal.querySelector(".form__button_type_close");
-
-const profileTitleEl = document.querySelector(".profile__title");
 const editProfileNameInput = editProfileModal.querySelector("#name");
-
-const profileDescriptionEl = document.querySelector(".profile__description");
 const editProfileDescriptionInput =
   editProfileModal.querySelector("#description");
-
 const editProfileForm = editProfileModal.querySelector(".form");
 
+const newPostModal = document.querySelector("#new-post-modal");
+const newPostCloseBtn = newPostModal.querySelector(".form__button_type_close");
 const newPostForm = newPostModal.querySelector(".form");
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
