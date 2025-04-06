@@ -35,39 +35,40 @@ const profileLargeBtn = document.querySelector(".profile__large-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".form__button_type_close");
 
-const profileNameElement = document.querySelector(".profile__title");
-const nameInput = editProfileModal.querySelector("#name");
+const profileTitleEl = document.querySelector(".profile__title");
+const editProfileNameInput = editProfileModal.querySelector("#name");
 
-const profileJobElement = document.querySelector(".profile__description");
-const jobInput = editProfileModal.querySelector("#description");
+const profileDescriptionEl = document.querySelector(".profile__description");
+const editProfileDescriptionInput =
+  editProfileModal.querySelector("#description");
 
-const profileFormElement = editProfileModal.querySelector(".form");
+const editProfileForm = editProfileModal.querySelector(".form");
 
-const addCardFormElement = newPostModal.querySelector(".form");
-const linkInput = newPostModal.querySelector("#link");
+const newPostForm = newPostModal.querySelector(".form");
+const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
 
-function handleAddCardSubmit(evt) {
+function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
-  console.log(linkInput.value);
+  console.log(newPostLinkInput.value);
   console.log(newPostNameInput.value);
   newPostModal.classList.remove("modal_is-opened");
 }
 
-function handleProfileFormSubmit(evt) {
+function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileNameElement.textContent = nameInput.value;
-  profileJobElement.textContent = jobInput.value;
+  profileTitleEl.textContent = editProfileNameInput.value;
+  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   editProfileModal.classList.remove("modal_is-opened");
 }
 
-addCardFormElement.addEventListener("submit", handleAddCardSubmit);
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+newPostForm.addEventListener("submit", handleNewPostFormSubmit);
+editProfileForm.addEventListener("submit", handleEditProfileFormSubmit);
 
 profileTextBtn.addEventListener("click", function () {
   editProfileModal.classList.add("modal_is-opened");
-  nameInput.value = profileNameElement.textContent;
-  jobInput.value = profileJobElement.textContent;
+  editProfileNameInput.value = profileTitleEl.textContent;
+  editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
