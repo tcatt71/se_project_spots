@@ -35,6 +35,11 @@ const profileLargeBtn = document.querySelector(".profile__large-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".form__button_type_close");
 
+profileTextBtn.addEventListener("click", openModal);
+editProfileCloseBtn.addEventListener("click", closeModal);
+profileLargeBtn.addEventListener("click", openModal);
+newPostCloseBtn.addEventListener("click", closeModal);
+
 function openModal() {
   editProfileModal.classList.add("modal_is-opened");
 }
@@ -42,8 +47,3 @@ function openModal() {
 function closeModal() {
   editProfileModal.classList.remove("modal_is-opened");
 }
-
-profileTextBtn.addEventListener("click", openModal);
-editProfileCloseBtn.addEventListener("click", closeModal);
-profileLargeBtn.addEventListener("click", openModal);
-newPostCloseBtn.addEventListener("click", closeModal);
