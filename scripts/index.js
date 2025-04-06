@@ -43,6 +43,17 @@ const jobInput = editProfileModal.querySelector("#description");
 
 const profileFormElement = editProfileModal.querySelector(".form");
 
+const addCardFormElement = newPostModal.querySelector(".form");
+const linkInput = newPostModal.querySelector("#link");
+const newPostNameInput = newPostModal.querySelector("#caption");
+
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+  console.log(linkInput.value);
+  console.log(newPostNameInput.value);
+  newPostModal.classList.remove("modal_is-opened");
+}
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = nameInput.value;
@@ -50,6 +61,7 @@ function handleProfileFormSubmit(evt) {
   editProfileModal.classList.remove("modal_is-opened");
 }
 
+addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 profileTextBtn.addEventListener("click", function () {
