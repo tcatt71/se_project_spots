@@ -35,8 +35,16 @@ const profileLargeBtn = document.querySelector(".profile__large-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".form__button_type_close");
 
+const profileNameElement = document.querySelector(".profile__title");
+const nameInput = editProfileModal.querySelector("#name");
+
+const profileJobElement = document.querySelector(".profile__description");
+const jobInput = editProfileModal.querySelector("#description");
+
 profileTextBtn.addEventListener("click", function () {
   editProfileModal.classList.add("modal_is-opened");
+  nameInput.value = profileNameElement.textContent;
+  jobInput.value = profileJobElement.textContent;
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
