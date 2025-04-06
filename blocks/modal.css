@@ -6,10 +6,13 @@
   background-color: rgba(000, 000, 000, 0.5);
   visibility: hidden;
   z-index: 1;
+  opacity: 0;
+  transition: all 0.5s ease-out;
 }
 
 .modal_is-opened {
   visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {
