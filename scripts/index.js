@@ -25,11 +25,15 @@ const initialCards = [
   },
 ];
 
-const editProfileModal = document.querySelector("#edit-profile-modal");
 const profileTextBtn = document.querySelector(".profile__text-button");
+const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(
   ".form__button_type_close"
 );
+
+const profileLargeBtn = document.querySelector(".profile__large-button");
+const newPostModal = document.querySelector("#new-post-modal");
+const newPostCloseBtn = newPostModal.querySelector(".form__button_type_close");
 
 function openModal() {
   editProfileModal.classList.add("modal_is-opened");
@@ -41,3 +45,5 @@ function closeModal() {
 
 profileTextBtn.addEventListener("click", openModal);
 editProfileCloseBtn.addEventListener("click", closeModal);
+profileLargeBtn.addEventListener("click", openModal);
+newPostCloseBtn.addEventListener("click", closeModal);
