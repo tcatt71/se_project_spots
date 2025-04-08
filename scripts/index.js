@@ -37,13 +37,15 @@ const editProfileCloseBtn = editProfileModal.querySelector(
 const editProfileNameInput = editProfileModal.querySelector("#name");
 const editProfileDescriptionInput =
   editProfileModal.querySelector("#description");
-const editProfileForm = editProfileModal.querySelector(".form");
+const editProfileForm = document.forms.namedItem("edit-profile-form");
 
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".form__button_type_close");
-const newPostForm = newPostModal.querySelector(".form");
+const newPostForm = document.forms.namedItem("new-post-form");
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
+
+console.log(editProfileForm);
 
 function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
