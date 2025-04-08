@@ -45,8 +45,6 @@ const newPostForm = document.forms.namedItem("new-post-form");
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
 
-console.log(editProfileForm);
-
 function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
   console.log(newPostLinkInput.value);
