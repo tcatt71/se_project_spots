@@ -85,3 +85,7 @@ profileTextBtn.addEventListener("click", function () {
 profileLargeBtn.addEventListener("click", function () {
   openPopup(newPostModal);
 });
+
+initialCards.forEach(function (card) {
+  console.log(card.name);
+});
