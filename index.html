@@ -107,25 +107,19 @@
 
         <section class="cards">
           <ul class="cards__list">
-            <li class="card">
-              <img
-                src="images/1-photo-by-moritz-feldmann-from-pexels.jpg"
-                alt="A view of Val Thorens from the window of a cozy room"
-                class="card__image"
-              />
-              <div class="card__caption">
-                <h2 class="card__description">Val Thorens</h2>
-                <button type="button" class="card__like-button">
-                  <img
-                    src="images/like.svg"
-                    alt="Like button icon"
-                    class="card__like-button-image"
-                  />
-                </button>
-              </div>
-            </li>
+            <template id="card-template">
+              <li class="card">
+                <img class="card__image" />
+                <div class="card__caption">
+                  <h2 class="card__description"></h2>
+                  <button type="button" class="card__like-button">
+                    <img class="card__like-button-image" />
+                  </button>
+                </div>
+              </li>
+            </template>
 
-            <li class="card">
+            <!-- <li class="card">
               <img
                 src="images/2-photo-by-ceiline-from-pexels.jpg"
                 alt="A curb side restaurant's terrace."
@@ -215,7 +209,7 @@
                   />
                 </button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </section>
       </main>

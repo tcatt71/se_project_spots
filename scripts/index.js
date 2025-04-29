@@ -43,6 +43,24 @@ const newPostNameInput = newPostModal.querySelector("#caption");
 
 const closeButtons = document.querySelectorAll(".form__button_type_close");
 
+const cardTemplate = document.querySelector("#card-template");
+
+const cardListEl = document.querySelector(".cards__list");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.content
+    .querySelector(".card")
+    .cloneNode(true);
+  const cardImage = cardElement.firstElementChild;
+  const cardTitleElement = cardElement.lastElementChild;
+
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+  cardTitleElement.textContent = data.name;
+
+  return cardElement;
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
@@ -86,6 +104,7 @@ profileLargeBtn.addEventListener("click", function () {
   openModal(newPostModal);
 });
 
-initialCards.forEach(function (card) {
-  console.log(card.name);
+initialCards.forEach((card) => {
+  const cardEl = getCardElement(card);
+  cardListEl.prepend(cardEl);
 });
