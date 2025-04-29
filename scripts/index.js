@@ -106,5 +106,5 @@ profileLargeBtn.addEventListener("click", function () {
 
 initialCards.forEach((card) => {
   const cardEl = getCardElement(card);
-  cardListEl.prepend(cardEl);
+  cardListEl.append(cardEl);
 });
