@@ -51,8 +51,8 @@ function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
     .cloneNode(true);
-  const cardImage = cardElement.firstElementChild;
-  const cardTitleElement = cardElement.lastElementChild;
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitleElement = cardElement.querySelector(".card__description");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
