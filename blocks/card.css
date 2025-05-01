@@ -32,6 +32,7 @@
   height: 20px;
   background-image: url("../images/like.svg");
   background-color: transparent;
+  background-repeat: no-repeat;
   opacity: 40%;
   border: none;
   padding: 0;
