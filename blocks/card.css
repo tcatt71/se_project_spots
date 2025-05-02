@@ -1,5 +1,23 @@
 .card {
+  position: relative;
   list-style: none;
+}
+
+.card__delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background-image: url("../images/delete.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.card__delete-button:hover {
+  background-image: url("../images/delete-red.svg");
 }
 
 .card__image {
