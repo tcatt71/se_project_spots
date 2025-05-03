@@ -53,20 +53,16 @@ function getCardElement(data) {
     .cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__description");
+  const likeBtn = cardElement.querySelector(".card__like-button");
   const deleteBtn = cardElement.querySelector(".card__delete-button");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitleElement.textContent = data.name;
-
-  const likeBtn = cardElement.querySelector(".card__like-button");
-  likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__like-button_liked");
-  });
-
-  deleteBtn.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  likeBtn.addEventListener("click", () =>
+    likeBtn.classList.toggle("card__like-button_liked")
+  );
+  deleteBtn.addEventListener("click", () => cardElement.remove());
 
   return cardElement;
 }
