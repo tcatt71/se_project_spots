@@ -23,6 +23,10 @@
   width: 730px;
 }
 
+.modal__container_preview {
+  width: unset;
+}
+
 @media screen and (max-width: 750px) {
   .modal__container {
     width: calc(100vw - 20px);
