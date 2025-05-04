@@ -3,6 +3,13 @@
   cursor: pointer;
 }
 
+.button__icon {
+  width: 12px;
+  height: 12px;
+  border-width: 2px;
+  border-color: #fcf5e5;
+}
+
 .button_type_text {
   display: flex;
   gap: 8px;
@@ -39,13 +46,6 @@
 
 .button_type_save {
   font-weight: 500;
-}
-
-.button__icon {
-  width: 12px;
-  height: 12px;
-  border-width: 2px;
-  border-color: #fcf5e5;
 }
 
 .button_type_icon {
