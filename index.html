@@ -13,7 +13,7 @@
         <div class="modal__container">
           <form id="edit-profile-form" class="form">
             <button
-              class="button button_type_icon button_type_close"
+              class="form__button form__button_type_close"
               type="button"
             ></button>
             <fieldset class="form__fieldset">
@@ -35,10 +35,7 @@
                 placeholder="Describe yourself"
               />
             </fieldset>
-            <button
-              class="button button_type_large button_type_save"
-              type="submit"
-            >
+            <button class="form__button form__button_type_save" type="submit">
               Save
             </button>
           </form>
@@ -49,7 +46,7 @@
         <div class="modal__container">
           <form id="new-post-form" class="form">
             <button
-              class="button button_type_icon button_type_close"
+              class="form__button form__button_type_close"
               type="button"
             ></button>
             <fieldset class="form__fieldset">
@@ -71,10 +68,7 @@
                 placeholder="Type your caption"
               />
             </fieldset>
-            <button
-              class="button button_type_large button_type_save"
-              type="submit"
-            >
+            <button class="form__button form__button_type_save" type="submit">
               Save
             </button>
           </form>
@@ -115,7 +109,10 @@
             <div class="profile__content">
               <h1 class="profile__title">Bessie Coleman</h1>
               <p class="profile__description">Civil Aviator</p>
-              <button type="button" class="button button_type_text">
+              <button
+                type="button"
+                class="profile__button profile__button_type_text"
+              >
                 <img src="images/edit-profile.svg" alt="Edit profile icon" />
                 Edit Profile
               </button>
@@ -123,12 +120,12 @@
           </div>
           <button
             type="button"
-            class="button button_type_large button_type_new-post"
+            class="profile__button profile__button_type_large"
           >
             <img
               src="images/new-post.svg"
               alt="New post button icon"
-              class="button__icon"
+              class="profile__button-icon"
             />New Post
           </button>
         </section>
@@ -138,14 +135,14 @@
               <li class="card">
                 <button
                   type="button"
-                  class="button button_type_delete"
+                  class="card__button card__button_type_delete"
                 ></button>
                 <img class="card__image" />
                 <div class="card__caption">
                   <h2 class="card__description"></h2>
                   <button
                     type="button"
-                    class="button button_type_icon button_type_like"
+                    class="card__button card__button_type_like"
                   ></button>
                 </div>
               </li>
