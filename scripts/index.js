@@ -41,11 +41,10 @@ const newPostForm = document.forms.namedItem("new-post-form");
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
 
-const closeButtons = document.querySelectorAll("[class$='button_type_close']");
-
-const cardTemplate = document.querySelector("#card-template");
-
 const cardListEl = document.querySelector(".cards__list");
+const cardTemplate = cardListEl.querySelector("#card-template");
+
+const closeButtons = document.querySelectorAll("[class$='button_type_close']");
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -53,20 +52,17 @@ function getCardElement(data) {
     .cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__description");
+  const likeBtn = cardElement.querySelector(".card__button_type_like");
   const deleteBtn = cardElement.querySelector(".card__button_type_delete");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitleElement.textContent = data.name;
 
-  const likeBtn = cardElement.querySelector(".card__button_type_like");
-  likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__button_liked");
-  });
-
-  deleteBtn.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  likeBtn.addEventListener("click", () =>
+    likeBtn.classList.toggle("card__button_liked")
+  );
+  deleteBtn.addEventListener("click", () => cardElement.remove());
 
   return cardElement;
 }
@@ -100,23 +96,17 @@ function handleEditProfileFormSubmit(evt) {
 for (button of closeButtons) {
   const parentModal = button.closest(".modal");
 
-  button.addEventListener("click", function () {
-    closeModal(parentModal);
-  });
+  button.addEventListener("click", () => closeModal(parentModal));
 }
 
 newPostForm.addEventListener("submit", handleNewPostFormSubmit);
 editProfileForm.addEventListener("submit", handleEditProfileFormSubmit);
-
-profileTextBtn.addEventListener("click", function () {
+profileTextBtn.addEventListener("click", () => {
   openModal(editProfileModal);
   editProfileNameInput.value = profileTitleEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 });
-
-profileLargeBtn.addEventListener("click", function () {
-  openModal(newPostModal);
-});
+profileLargeBtn.addEventListener("click", () => openModal(newPostModal));
 
 initialCards.forEach((card) => {
   const cardEl = getCardElement(card);
