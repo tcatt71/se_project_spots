@@ -7,7 +7,6 @@
 
 .form__button {
   border: none;
-  /* margin: 0; */
   cursor: pointer;
 }
 
@@ -20,17 +19,7 @@
   background-image: url(../images/close.svg);
   background-color: transparent;
   opacity: 0.4;
-  /* border: none; */
-  /* cursor: pointer; */
   padding: 0;
-
-  /* background-color: #212121;
-  color: #fcf5e5;
-  line-height: 1;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 18px 32px;
-  border-radius: 8px; */
 }
 
 .form__button_type_close:hover {
@@ -77,7 +66,6 @@
   color: #fcf5e5;
   line-height: 1;
   font-weight: 500;
-  /* cursor: pointer; */
   padding: 18px 32px;
   border-radius: 8px;
 }
