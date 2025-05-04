@@ -27,8 +27,8 @@ const initialCards = [
 
 const profileTitleEl = document.querySelector(".profile__title");
 const profileDescriptionEl = document.querySelector(".profile__description");
-const profileTextBtn = document.querySelector(".profile__text-button");
-const profileLargeBtn = document.querySelector(".profile__large-button");
+const profileTextBtn = document.querySelector(".button_type_text");
+const profileLargeBtn = document.querySelector(".button_type_new-post");
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileNameInput = editProfileModal.querySelector("#name");
@@ -41,7 +41,7 @@ const newPostForm = document.forms.namedItem("new-post-form");
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
 
-const closeButtons = document.querySelectorAll(".form__button_type_close");
+const closeButtons = document.querySelectorAll(".button_type_close");
 
 const cardTemplate = document.querySelector("#card-template");
 
@@ -53,14 +53,14 @@ function getCardElement(data) {
     .cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__description");
-  const likeBtn = cardElement.querySelector(".card__like-button");
-  const deleteBtn = cardElement.querySelector(".card__delete-button");
+  const likeBtn = cardElement.querySelector(".button_type_like");
+  const deleteBtn = cardElement.querySelector(".button_type_delete");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitleElement.textContent = data.name;
   likeBtn.addEventListener("click", () =>
-    likeBtn.classList.toggle("card__like-button_liked")
+    likeBtn.classList.toggle("button_liked")
   );
   deleteBtn.addEventListener("click", () => cardElement.remove());
 

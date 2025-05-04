@@ -3,23 +3,6 @@
   list-style: none;
 }
 
-.card__delete-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 32px;
-  height: 32px;
-  background-image: url("../images/delete.svg");
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-}
-
-.card__delete-button:hover {
-  background-image: url("../images/delete-red.svg");
-}
-
 .card__image {
   display: block;
   width: 413px;
@@ -45,31 +28,6 @@
   margin: 0;
 }
 
-.card__like-button {
-  width: 23px;
-  height: 20px;
-  background-image: url("../images/like.svg");
-  background-color: transparent;
-  background-repeat: no-repeat;
-  opacity: 40%;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.card__like-button:hover {
-  opacity: 1;
-}
-
-.card__like-button_liked {
-  background-image: url("../images/like-red.svg");
-  opacity: 1;
-}
-
-.card__like-button_liked:hover {
-  opacity: 50%;
-}
-
 @media screen and (max-width: 583px) {
   .card__image {
     width: 288px;
@@ -80,11 +38,5 @@
     max-width: 251px;
     font-size: 16px;
     line-height: 1;
-  }
-
-  .card__like-button {
-    width: 20px;
-    height: 18px;
-    background-size: 20px 18px;
   }
 }
