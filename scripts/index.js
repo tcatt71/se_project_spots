@@ -53,9 +53,6 @@ const previewImageCardImage =
   previewImageModalContainer.querySelector(".card__image");
 const previewImageDescription =
   previewImageModalContainer.querySelector(".card__description");
-const previewImageCloseBtn = previewImageModalContainer.querySelector(
-  ".card__button_type_close"
-);
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
