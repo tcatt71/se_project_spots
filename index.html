@@ -10,7 +10,7 @@
   <body>
     <div class="page">
       <div class="modal" id="edit-profile-modal">
-        <div class="modal__container">
+        <div class="modal__container modal__container_type_form">
           <form id="edit-profile-form" class="form">
             <button
               class="form__button form__button_type_close"
@@ -43,7 +43,7 @@
       </div>
 
       <div class="modal" id="new-post-modal">
-        <div class="modal__container">
+        <div class="modal__container modal__container_type_form">
           <form id="new-post-form" class="form">
             <button
               class="form__button form__button_type_close"
@@ -76,17 +76,10 @@
       </div>
 
       <div class="modal" id="preview-image-modal">
-        <div class="modal__container">
-          <li class="card">
-            <button
-              type="button"
-              class="card__button card__button_type_close"
-            ></button>
-            <img class="card__image" />
-            <div class="card__caption">
-              <h2 class="card__description"></h2>
-            </div>
-          </li>
+        <div class="modal__container modal__container_type_preview">
+          <button type="button" class="modal__close-button"></button>
+          <img class="modal__image" />
+          <h2 class="modal__description"></h2>
         </div>
       </div>
 

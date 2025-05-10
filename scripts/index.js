@@ -1,5 +1,9 @@
 const initialCards = [
   {
+    name: "Golden Gate bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  },
+  {
     name: "Val Thorens",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
   },
@@ -44,15 +48,13 @@ const newPostNameInput = newPostModal.querySelector("#caption");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate = cardListEl.querySelector("#card-template");
 
-const closeButtons = document.querySelectorAll("[class$='button_type_close']");
+const closeButtons = document.querySelectorAll("[class*='close']");
 
 const previewImageModal = document.querySelector("#preview-image-modal");
-const previewImageModalContainer =
-  previewImageModal.querySelector(".modal__container");
-const previewImageCardImage =
-  previewImageModalContainer.querySelector(".card__image");
-const previewImageDescription =
-  previewImageModalContainer.querySelector(".card__description");
+const previewImageDescription = previewImageModal.querySelector(
+  ".modal__description"
+);
+const previewImageCardImage = previewImageModal.querySelector(".modal__image");
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -72,11 +74,9 @@ function getCardElement(data) {
   );
   deleteBtn.addEventListener("click", () => cardElement.remove());
   cardImage.addEventListener("click", () => {
-    previewImageModalContainer.classList.add("modal__container_preview");
-    previewImageCardImage.src = cardImage.src;
-    previewImageCardImage.classList.add("card__image_preview");
     previewImageDescription.textContent = cardTitleElement.textContent;
-    previewImageDescription.classList.add("card__description_preview");
+    previewImageCardImage.src = cardImage.src;
+    previewImageCardImage.alt = cardImage.alt;
     openModal(previewImageModal);
   });
 

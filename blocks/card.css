@@ -24,20 +24,6 @@
   background-image: url("../images/delete-red.svg");
 }
 
-.card__button_type_close {
-  position: absolute;
-  top: 0;
-  right: -52.5px;
-  width: 40px;
-  height: 40px;
-  background-image: url(../images/close-light.svg);
-  opacity: 1;
-}
-
-.card__button_type_close:hover {
-  opacity: 0.4;
-}
-
 .card__image {
   display: block;
   width: 413px;
@@ -45,14 +31,6 @@
   object-fit: cover;
   border-radius: 8px;
   margin: 0 0 12px;
-}
-
-.card__image_preview {
-  width: unset;
-  height: unset;
-  max-width: 80vw;
-  max-height: 80vh;
-  margin: 0 auto 8px;
 }
 
 .card__caption {
@@ -69,13 +47,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 0;
-}
-
-.card__description_preview {
-  color: #fcf5e5;
-  background-color: #212121;
-  padding: 4px 8px;
-  border-radius: 8px;
 }
 
 .card__button_type_like {
