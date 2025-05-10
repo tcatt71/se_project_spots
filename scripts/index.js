@@ -93,10 +93,15 @@ function closeModal(modal) {
 
 function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
+
   const card = {
     link: newPostLinkInput.value,
     name: newPostNameInput.value,
   };
+
+  console.log(card.link);
+  console.log(card.name);
+
   const cardEl = getCardElement(card);
   cardListEl.prepend(cardEl);
   closeModal(newPostModal);
