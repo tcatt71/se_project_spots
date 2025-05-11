@@ -104,6 +104,11 @@ function handleNewPostFormSubmit(evt) {
 
   const cardEl = getCardElement(card);
   cardListEl.prepend(cardEl);
+
+  // Clear user input fields
+  newPostLinkInput.value = "";
+  newPostNameInput.value = "";
+
   closeModal(newPostModal);
 }
 
