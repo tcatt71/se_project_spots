@@ -106,5 +106,6 @@
 
   .modal__description {
     max-width: 90vw;
+    font-size: 16px;
   }
 }
