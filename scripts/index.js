@@ -39,11 +39,17 @@ const editProfileNameInput = editProfileModal.querySelector("#name");
 const editProfileDescriptionInput =
   editProfileModal.querySelector("#description");
 const editProfileForm = document.forms.namedItem("edit-profile-form");
+const editProfileInputs = Array.from(
+  editProfileForm.querySelectorAll(".form__input")
+);
+const editProfileSubmitBtn = editProfileForm.querySelector("[type='submit']");
 
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostForm = document.forms.namedItem("new-post-form");
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
+const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
+const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
 
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate = cardListEl.querySelector("#card-template");
@@ -127,8 +133,15 @@ profileTextBtn.addEventListener("click", () => {
   openModal(editProfileModal);
   editProfileNameInput.value = profileTitleEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  editProfileInputs.forEach((input) =>
+    handleInputValidation(input, editProfileForm, config)
+  );
+  toggleButtonState(editProfileInputs, editProfileSubmitBtn);
 });
-profileLargeBtn.addEventListener("click", () => openModal(newPostModal));
+profileLargeBtn.addEventListener("click", () => {
+  openModal(newPostModal);
+  toggleButtonState(newPostInputs, newPostSubmitBtn);
+});
 
 initialCards.forEach((card) => {
   const cardEl = getCardElement(card);

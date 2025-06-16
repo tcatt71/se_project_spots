@@ -25,8 +25,11 @@
                 id="name"
                 class="form__input"
                 placeholder="Type your name"
+                minlength="2"
+                maxlength="40"
                 required
               />
+              <p class="form__error-msg name-error"></p>
               <label for="description" class="form__label">Description</label>
               <input
                 type="text"
@@ -34,8 +37,11 @@
                 id="description"
                 class="form__input"
                 placeholder="Describe yourself"
+                minlength="2"
+                maxlength="200"
                 required
               />
+              <p class="form__error-msg description-error"></p>
             </fieldset>
             <button class="form__button form__button_type_save" type="submit">
               Save
@@ -55,13 +61,14 @@
               <legend class="form__title">New post</legend>
               <label for="link" class="form__label">Images link</label>
               <input
-                type="text"
+                type="url"
                 name="link"
                 id="link"
                 class="form__input"
                 placeholder="Paste a link to the picture"
                 required
               />
+              <p class="form__error-msg link-error"></p>
               <label for="caption" class="form__label">Caption</label>
               <input
                 type="text"
@@ -69,8 +76,11 @@
                 id="caption"
                 class="form__input"
                 placeholder="Type your caption"
+                minlength="2"
+                maxlength="30"
                 required
               />
+              <p class="form__error-msg caption-error"></p>
             </fieldset>
             <button class="form__button form__button_type_save" type="submit">
               Save
@@ -122,6 +132,7 @@
             />New Post
           </button>
         </section>
+
         <section class="cards">
           <ul class="cards__list">
             <template id="card-template">
@@ -148,5 +159,6 @@
       </footer>
     </div>
     <script src="scripts/index.js" defer></script>
+    <script src="scripts/validation.js" defer></script>
   </body>
 </html>
