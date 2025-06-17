@@ -134,7 +134,7 @@ profileTextBtn.addEventListener("click", () => {
   editProfileNameInput.value = profileTitleEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   editProfileInputs.forEach((input) =>
-    handleInputValidation(input, editProfileForm, config)
+    handleInputValidation(input, editProfileForm, settings)
   );
   toggleButtonState(editProfileInputs, editProfileSubmitBtn);
 });
