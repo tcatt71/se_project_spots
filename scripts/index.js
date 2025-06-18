@@ -63,6 +63,12 @@ const previewImageDescription = previewImageModal.querySelector(
 );
 const previewImageCardImage = previewImageModal.querySelector(".modal__image");
 
+function escapeKeyExit(e) {
+  const modal = document.querySelector(".modal_is-opened");
+  console.log(e.target);
+  if (e.key === "Escape") closeModal(modal);
+}
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -92,10 +98,12 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", escapeKeyExit);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", escapeKeyExit);
 }
 
 function handleNewPostFormSubmit(evt) {
@@ -146,7 +154,7 @@ profileLargeBtn.addEventListener("click", () => {
 
 modalList.forEach((modal) => {
   modal.addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) modal.classList.remove("modal_is-opened");
+    if (e.target === e.currentTarget) closeModal(modal);
   });
 });
 
