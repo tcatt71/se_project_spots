@@ -47,6 +47,10 @@ const editProfileSubmitBtn = editProfileForm.querySelector("[type='submit']");
 
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostForm = document.forms.namedItem("new-post-form");
+const newPostInputList = Array.from(newPostForm.elements).filter((el) =>
+  el.classList.contains("form__input")
+);
+// console.log(newPostInputList);
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostNameInput = newPostModal.querySelector("#caption");
 const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
@@ -120,6 +124,9 @@ function handleNewPostFormSubmit(evt) {
   const cardEl = getCardElement(card);
   cardListEl.prepend(cardEl);
   newPostForm.reset();
+  newPostInputList.forEach((input) =>
+    handleInputValidation(input, newPostForm, settings)
+  );
   closeModal(newPostModal);
 }
 
