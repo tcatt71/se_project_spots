@@ -153,7 +153,7 @@ profileLargeBtn.addEventListener("click", () => {
   toggleButtonState(newPostInputs, newPostSubmitBtn);
 });
 
-for (button of closeButtons) {
+for (const button of closeButtons) {
   const parentModal = button.closest(".modal");
 
   button.addEventListener("click", () => closeModal(parentModal));
