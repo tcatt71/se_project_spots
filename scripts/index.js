@@ -50,10 +50,10 @@ const newPostForm = document.forms.namedItem("new-post-form");
 const newPostInputList = Array.from(newPostForm.elements).filter((el) =>
   el.classList.contains("form__input")
 );
-// console.log(newPostInputList);
 const newPostLinkInput = newPostModal.querySelector("#link");
-const newPostNameInput = newPostModal.querySelector("#caption");
+const newPostCaptionInput = newPostModal.querySelector("#caption");
 const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
+const newPostErrorEl = newPostModal.querySelector(".form__error-msg");
 const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
 
 const cardListEl = document.querySelector(".cards__list");
@@ -77,10 +77,10 @@ function closeModal(modal) {
   document.removeEventListener("keydown", escapeKeyExitModal);
 }
 
-function escapeKeyExitModal(e) {
+function escapeKeyExitModal(evt) {
   const modal = document.querySelector(".modal_is-opened");
 
-  if (e.key === "Escape") closeModal(modal);
+  if (evt.key === "Escape") closeModal(modal);
 }
 
 function getCardElement(data) {
@@ -115,18 +115,14 @@ function handleNewPostFormSubmit(evt) {
 
   const card = {
     link: newPostLinkInput.value,
-    name: newPostNameInput.value,
+    name: newPostCaptionInput.value,
   };
-
-  console.log(card.link);
-  console.log(card.name);
 
   const cardEl = getCardElement(card);
   cardListEl.prepend(cardEl);
   newPostForm.reset();
-  newPostInputList.forEach((input) =>
-    handleInputValidation(input, newPostForm, settings)
-  );
+  toggleButtonState(editProfileInputs, editProfileSubmitBtn);
+  newPostErrorEl.textContent = "";
   closeModal(newPostModal);
 }
 
@@ -146,7 +142,6 @@ profileTextBtn.addEventListener("click", () => {
   editProfileInputs.forEach((input) =>
     handleInputValidation(input, editProfileForm, settings)
   );
-  toggleButtonState(editProfileInputs, editProfileSubmitBtn);
 });
 profileLargeBtn.addEventListener("click", () => {
   openModal(newPostModal);
@@ -160,8 +155,8 @@ for (const button of closeButtons) {
 }
 
 modalList.forEach((modal) => {
-  modal.addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) closeModal(modal);
+  modal.addEventListener("click", (evt) => {
+    if (evt.target === evt.currentTarget) closeModal(modal);
   });
 });
 
