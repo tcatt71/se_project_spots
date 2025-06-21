@@ -3,7 +3,7 @@ const settings = {
   inputSelector: ".form__input",
   errorElementSelector: ".form__error-msg",
   submitButtonSelector: ".form__button_type_save",
-  inactiveButtonClass: "form__button_type_save:disabled",
+  inactiveButtonClass: "form__button_disabled",
   inputInvalidClass: "form__input_invalid",
   errorClass: "form__error-msg_visible",
 };
@@ -16,10 +16,10 @@ function hasInvalidInputs(inputs) {
   return inputs.some((input) => !inputIsValid(input));
 }
 
-function toggleButtonState(inputs, button) {
+function toggleButtonState(inputs, button, config) {
   if (hasInvalidInputs(inputs)) {
     button.disabled = true;
-    button.classlist.add(config.inactiveButtonClass);
+    button.classList.add(config.inactiveButtonClass);
   } else {
     button.disabled = false;
     button.classList.remove(config.inactiveButtonClass);
@@ -60,7 +60,7 @@ function enableValidation(config) {
     inputs.forEach((input) => {
       input.addEventListener("input", () => {
         handleInputValidation(input, form, config);
-        toggleButtonState(inputs, submitBtn);
+        toggleButtonState(inputs, submitBtn, config);
       });
     });
   });

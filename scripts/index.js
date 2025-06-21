@@ -121,7 +121,7 @@ function handleNewPostFormSubmit(evt) {
   const cardEl = getCardElement(card);
   cardListEl.prepend(cardEl);
   newPostForm.reset();
-  toggleButtonState(editProfileInputs, editProfileSubmitBtn);
+  toggleButtonState(editProfileInputs, editProfileSubmitBtn, settings);
   newPostErrorEl.textContent = "";
   closeModal(newPostModal);
 }
@@ -145,7 +145,7 @@ profileTextBtn.addEventListener("click", () => {
 });
 profileLargeBtn.addEventListener("click", () => {
   openModal(newPostModal);
-  toggleButtonState(newPostInputs, newPostSubmitBtn);
+  toggleButtonState(newPostInputs, newPostSubmitBtn, settings);
 });
 
 for (const button of closeButtons) {
