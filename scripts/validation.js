@@ -2,8 +2,10 @@ const settings = {
   formSelector: ".form",
   inputSelector: ".form__input",
   errorElementSelector: ".form__error-msg",
-  submitBtnSelector: ".form__button_type_save",
+  submitButtonSelector: ".form__button_type_save",
+  inactiveButtonClass: "form__button_type_save:disabled",
   inputInvalidClass: "form__input_invalid",
+  errorClass: "form__error-msg_visible",
 };
 
 function inputIsValid(input) {
@@ -17,8 +19,10 @@ function hasInvalidInputs(inputs) {
 function toggleButtonState(inputs, button) {
   if (hasInvalidInputs(inputs)) {
     button.disabled = true;
+    button.classlist.add(config.inactiveButtonClass);
   } else {
     button.disabled = false;
+    button.classList.remove(config.inactiveButtonClass);
   }
 }
 
@@ -37,10 +41,12 @@ function handleInputValidation(input, form, config) {
 
   if (inputIsValid(input)) {
     input.classList.remove(config.inputInvalidClass);
+    errorElement.classList.remove(config.errorClass);
     updateValidationMessage(errorElement, input);
   } else {
     input.classList.add(config.inputInvalidClass);
     updateValidationMessage(errorElement, input);
+    errorElement.classList.add(config.errorClass);
   }
 }
 
@@ -48,7 +54,7 @@ function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((form) => {
-    const submitBtn = form.querySelector(config.submitBtnSelector);
+    const submitBtn = form.querySelector(config.submitButtonSelector);
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));
 
     inputs.forEach((input) => {
