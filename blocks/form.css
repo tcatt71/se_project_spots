@@ -43,7 +43,6 @@
   color: #212121b3;
   line-height: 1.1;
   margin: 0 0 8px;
-  /* margin: 0 0 32px; */
 }
 
 .form__input {
@@ -72,13 +71,13 @@
 
 .form__error-msg {
   color: #ff0000b3;
-  /* display: none; */
+  display: none;
   margin: 0 0 32px;
 }
 
-/* .form__error-msg_visible {
+.form__error-msg_visible {
   display: block;
-} */
+}
 
 .form__button_type_save {
   background-color: #212121;
