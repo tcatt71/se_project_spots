@@ -122,7 +122,6 @@ function handleNewPostFormSubmit(evt) {
   cardListEl.prepend(cardEl);
   newPostForm.reset();
   toggleButtonState(editProfileInputs, editProfileSubmitBtn, settings);
-  newPostErrorEl.textContent = "";
   closeModal(newPostModal);
 }
 
@@ -131,6 +130,11 @@ function handleEditProfileFormSubmit(evt) {
   profileTitleEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   closeModal(editProfileModal);
+}
+
+function renderCard(card, method) {
+  const cardEl = getCardElement(card);
+  cardListEl[method](cardEl);
 }
 
 newPostForm.addEventListener("submit", handleNewPostFormSubmit);
@@ -160,7 +164,4 @@ modalList.forEach((modal) => {
   });
 });
 
-initialCards.forEach((card) => {
-  const cardEl = getCardElement(card);
-  cardListEl.append(cardEl);
-});
+initialCards.forEach((card) => renderCard(card, "append"));
