@@ -1,4 +1,4 @@
-const settings = {
+export const settings = {
   formSelector: ".form",
   inputSelector: ".form__input",
   errorElementSelector: ".form__error-msg",
@@ -16,7 +16,7 @@ function hasInvalidInputs(inputs) {
   return inputs.some((input) => !inputIsValid(input));
 }
 
-function toggleButtonState(inputs, button, config) {
+export function toggleButtonState(inputs, button, config) {
   if (hasInvalidInputs(inputs)) {
     button.disabled = true;
     button.classList.add(config.inactiveButtonClass);
@@ -34,7 +34,7 @@ function updateValidationMessage(errorElement, input) {
   errorElement.textContent = getValidationMessage(input);
 }
 
-function handleInputValidation(input, form, config) {
+export function handleInputValidation(input, form, config) {
   const errorElement = form.querySelector(
     `#${input.id} + ${config.errorElementSelector}`
   );
@@ -50,7 +50,7 @@ function handleInputValidation(input, form, config) {
   }
 }
 
-function enableValidation(config) {
+export function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((form) => {
@@ -65,5 +65,3 @@ function enableValidation(config) {
     });
   });
 }
-
-enableValidation(settings);

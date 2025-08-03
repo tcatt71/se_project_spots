@@ -1,3 +1,10 @@
+import {
+  enableValidation,
+  toggleButtonState,
+  settings,
+  handleInputValidation,
+} from "./validation.js";
+
 const initialCards = [
   {
     name: "Golden Gate bridge",
@@ -165,3 +172,5 @@ modalList.forEach((modal) => {
 });
 
 initialCards.forEach((card) => renderCard(card, "append"));
+
+enableValidation(settings);
