@@ -5,6 +5,7 @@ import {
   handleInputValidation,
   enableValidation,
 } from "../scripts/validation.js";
+import Api from "../utils/Api.js";
 
 const initialCards = [
   {
@@ -36,8 +37,10 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
+
 const modalList = document.querySelectorAll(".modal");
 
+const profileAvatarImg = document.querySelector(".profile__avatar");
 const profileTitleEl = document.querySelector(".profile__title");
 const profileDescriptionEl = document.querySelector(".profile__description");
 const profileTextBtn = document.querySelector(".profile__button_type_text");
@@ -55,13 +58,9 @@ const editProfileSubmitBtn = editProfileForm.querySelector("[type='submit']");
 
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostForm = document.forms.namedItem("new-post-form");
-const newPostInputList = Array.from(newPostForm.elements).filter((el) =>
-  el.classList.contains("form__input")
-);
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostCaptionInput = newPostModal.querySelector("#caption");
 const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
-const newPostErrorEl = newPostModal.querySelector(".form__error-msg");
 const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
 
 const cardListEl = document.querySelector(".cards__list");
@@ -74,6 +73,19 @@ const previewImageDescription = previewImageModal.querySelector(
   ".modal__description"
 );
 const previewImageCardImage = previewImageModal.querySelector(".modal__image");
+
+const api = new Api();
+
+function setProfileContent(user) {
+  profileTitleEl.textContent = user.name;
+  profileDescriptionEl.textContent = user.about;
+  profileAvatarImg.src = user.avatar;
+}
+
+api
+  .getUserInformation()
+  .then((data) => setProfileContent(data))
+  .catch((err) => console.error(err));
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
