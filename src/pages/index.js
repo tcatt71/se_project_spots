@@ -83,14 +83,6 @@ const api = new Api({
   },
 });
 
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
-//     "Content-Type": "application/json"
-//   }
-// });
-
 function setProfileContent(user) {
   profileTitleEl.textContent = user.name;
   profileDescriptionEl.textContent = user.about;

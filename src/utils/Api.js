@@ -1,24 +1,26 @@
 class Api {
   constructor(options) {
-    this.baseUrl = options.baseUrl;
-    this.apiKey = options.headers.authorization;
+    this._baseUrl = options.baseUrl;
+    this._apiKey = options.headers.authorization;
   }
 
   getInitialCards() {
-    return fetch(`${this.baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: this.apiKey,
+        authorization: this._apiKey,
       },
     }).then((res) => this._processResponse(res));
   }
 
   getUserInformation() {
-    return fetch(`${this.baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        authorization: this.apiKey,
+        authorization: this._apiKey,
       },
     }).then((res) => this._processResponse(res));
   }
+
+  editProfile() {}
 
   _processResponse(response) {
     if (response.ok) {
