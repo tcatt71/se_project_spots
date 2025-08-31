@@ -1,17 +1,30 @@
 class Api {
-  constructor(options) {}
+  constructor(options) {
+    this.baseUrl = options.baseUrl;
+    this.apiKey = options.headers.authorization;
+  }
+
+  getInitialCards() {
+    return fetch(`${this.baseUrl}/cards`, {
+      headers: {
+        authorization: this.apiKey,
+      },
+    }).then((res) => this._processResponse(res));
+  }
 
   getUserInformation() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+    return fetch(`${this.baseUrl}/users/me`, {
       headers: {
-        authorization: "9b992123-8ee4-427e-9cb1-806d78626daa",
+        authorization: this.apiKey,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._processResponse(res));
+  }
+
+  _processResponse(response) {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(`Error: ${response.status}`);
   }
 }
 

@@ -6,6 +6,7 @@ import {
   enableValidation,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
+import { API_KEY, BASE_URL } from "../utils/constants.js";
 
 const initialCards = [
   {
@@ -64,6 +65,7 @@ const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
 const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
 
 const cardListEl = document.querySelector(".cards__list");
+
 const cardTemplate = cardListEl.querySelector("#card-template");
 
 const closeButtons = document.querySelectorAll("[class*='close']");
@@ -74,13 +76,31 @@ const previewImageDescription = previewImageModal.querySelector(
 );
 const previewImageCardImage = previewImageModal.querySelector(".modal__image");
 
-const api = new Api();
+const api = new Api({
+  baseUrl: BASE_URL,
+  headers: {
+    authorization: API_KEY,
+  },
+});
+
+// const api = new Api({
+//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
+//   headers: {
+//     authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+//     "Content-Type": "application/json"
+//   }
+// });
 
 function setProfileContent(user) {
   profileTitleEl.textContent = user.name;
   profileDescriptionEl.textContent = user.about;
   profileAvatarImg.src = user.avatar;
 }
+
+api
+  .getInitialCards()
+  .then((cards) => cards.forEach((card) => renderCard(card, "append")))
+  .catch((err) => console.error(err));
 
 api
   .getUserInformation()
@@ -183,7 +203,5 @@ modalList.forEach((modal) => {
     if (evt.target === evt.currentTarget) closeModal(modal);
   });
 });
-
-initialCards.forEach((card) => renderCard(card, "append"));
 
 enableValidation(settings);
