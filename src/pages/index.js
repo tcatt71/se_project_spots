@@ -146,13 +146,19 @@ function getCardElement(data) {
 function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
 
-  const card = {
-    link: newPostLinkInput.value,
+  const formData = {
     name: newPostCaptionInput.value,
+    link: newPostLinkInput.value,
   };
 
-  const cardEl = getCardElement(card);
-  cardListEl.prepend(cardEl);
+  api
+    .addCard(formData)
+    .then((res) => {
+      const cardElement = getCardElement(res);
+      cardListEl.prepend(cardElement);
+    })
+    .catch((err) => console.error(err));
+
   newPostForm.reset();
   toggleButtonState(editProfileInputs, editProfileSubmitBtn, settings);
   closeModal(newPostModal);
