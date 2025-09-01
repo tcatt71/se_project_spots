@@ -1,8 +1,13 @@
 .form {
   position: relative;
-  background-color: #fff;
   padding: 32px 50px;
   border-radius: 8px;
+}
+
+.form_confirmation {
+  position: static;
+  padding: 0;
+  border-radius: 0;
 }
 
 .form__button {
@@ -99,6 +104,10 @@
 @media screen and (max-width: 583px) {
   .form {
     padding: 22px 12px 12px;
+  }
+
+  .form_confirmation {
+    padding: 0;
   }
 
   .form__button_type_close {

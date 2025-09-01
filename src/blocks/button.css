@@ -1,0 +1,27 @@
+.button {
+  font-weight: 500;
+  line-height: 1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button__type_delete {
+  background-color: #ff6565;
+  padding: 18px 52.5px;
+}
+
+.button__type_delete:hover {
+  background-color: #ff3333;
+}
+
+.button__type_cancel {
+  background-color: #fff;
+  padding: 17px 48.5px;
+  border: 1px solid #212121;
+}
+
+.button__type_cancel:hover {
+  color: #fff;
+  background-color: #212121;
+}

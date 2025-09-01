@@ -64,6 +64,8 @@ const newPostCaptionInput = newPostModal.querySelector("#caption");
 const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
 const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
 
+const confirmationModal = document.querySelector("#confirmation-modal");
+
 const cardListEl = document.querySelector(".cards__list");
 
 const cardTemplate = cardListEl.querySelector("#card-template");
@@ -132,7 +134,10 @@ function getCardElement(data) {
   likeBtn.addEventListener("click", () =>
     likeBtn.classList.toggle("card__button_liked")
   );
-  deleteBtn.addEventListener("click", () => cardElement.remove());
+  deleteBtn.addEventListener("click", () =>
+    confirmationModal.classList.add("modal_is-opened")
+  );
+  // deleteBtn.addEventListener("click", () => cardElement.remove());
   cardImage.addEventListener("click", () => {
     previewImageDescription.textContent = cardTitleElement.textContent;
     previewImageCardImage.src = cardImage.src;
@@ -154,6 +159,7 @@ function handleNewPostFormSubmit(evt) {
   api
     .addCard(formData)
     .then((cardData) => {
+      console.log(cardData);
       const cardElement = getCardElement(cardData);
       cardListEl.prepend(cardElement);
     })
