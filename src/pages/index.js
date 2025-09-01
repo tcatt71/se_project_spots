@@ -158,10 +158,23 @@ function handleNewPostFormSubmit(evt) {
   closeModal(newPostModal);
 }
 
+function updateTextElements(user) {
+  profileTitleEl.textContent = user.name;
+  profileDescriptionEl.textContent = user.about;
+}
+
 function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileTitleEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
+
+  const data = {};
+  data.name = editProfileNameInput.value;
+  data.about = editProfileDescriptionInput.value;
+
+  api
+    .editUserInfo(data)
+    .then((user) => updateTextElements(user))
+    .catch((err) => console.error(err));
+
   closeModal(editProfileModal);
 }
 

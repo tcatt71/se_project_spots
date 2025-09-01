@@ -16,6 +16,14 @@ class Api {
     }).then((res) => this._processResponse(res));
   }
 
+  editUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name, about }),
+    }).then((res) => this._processResponse(res));
+  }
+
   _processResponse(response) {
     if (response.ok) {
       return response.json();
