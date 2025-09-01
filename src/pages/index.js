@@ -153,8 +153,8 @@ function handleNewPostFormSubmit(evt) {
 
   api
     .addCard(formData)
-    .then((res) => {
-      const cardElement = getCardElement(res);
+    .then((cardData) => {
+      const cardElement = getCardElement(cardData);
       cardListEl.prepend(cardElement);
     })
     .catch((err) => console.error(err));
@@ -172,12 +172,13 @@ function updateTextElements(user) {
 function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  const data = {};
-  data.name = editProfileNameInput.value;
-  data.about = editProfileDescriptionInput.value;
+  const formData = {
+    name: editProfileNameInput.value,
+    about: editProfileDescriptionInput.value,
+  };
 
   api
-    .editUserInfo(data)
+    .editUserInfo(formData)
     .then((user) => updateTextElements(user))
     .catch((err) => console.error(err));
 
