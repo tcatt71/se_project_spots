@@ -129,20 +129,19 @@ function getCardElement(data) {
     .cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__description");
-  const likeBtn = cardElement.querySelector(".card__button_type_like");
+  const likeButton = cardElement.querySelector(".card__button_type_like");
   const deleteButton = cardElement.querySelector(".card__button_type_delete");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitleElement.textContent = data.name;
 
-  likeBtn.addEventListener("click", () =>
-    likeBtn.classList.toggle("card__button_liked")
+  likeButton.addEventListener("click", () =>
+    handleLikeButtonClick(likeButton, data)
   );
   deleteButton.addEventListener("click", () =>
     handleDeleteCard(cardElement, data)
   );
-
   cardImage.addEventListener("click", () => {
     previewImageDescription.textContent = cardTitleElement.textContent;
     previewImageCardImage.src = cardImage.src;
@@ -151,6 +150,20 @@ function getCardElement(data) {
   });
 
   return cardElement;
+}
+
+function handleLikeButtonClick(card, data) {
+  if (card.classList.contains("card__button_liked")) {
+    api
+      .unlikeCard(data._id)
+      .then(() => card.classList.remove("card__button_liked"))
+      .catch((err) => console.error(err));
+  } else {
+    api
+      .likeCard(data._id)
+      .then(() => card.classList.add("card__button_liked"))
+      .catch((err) => console.error(err));
+  }
 }
 
 function handleDeleteCard(cardElement, data) {
@@ -182,7 +195,6 @@ function handleNewPostFormSubmit(evt) {
   api
     .addCard(formData)
     .then((cardData) => {
-      console.log(cardData);
       const cardElement = getCardElement(cardData);
       cardListEl.prepend(cardElement);
     })

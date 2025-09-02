@@ -39,6 +39,20 @@ class Api {
     }).then((res) => this._processResponse(res));
   }
 
+  likeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((res) => this._processResponse(res));
+  }
+
+  unlikeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => this._processResponse(res));
+  }
+
   _processResponse(response) {
     if (response.ok) {
       return response.json();
