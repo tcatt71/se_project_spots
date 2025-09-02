@@ -32,6 +32,13 @@ class Api {
     }).then((res) => this._processResponse(res));
   }
 
+  removeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => this._processResponse(res));
+  }
+
   _processResponse(response) {
     if (response.ok) {
       return response.json();

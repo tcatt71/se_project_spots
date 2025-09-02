@@ -64,7 +64,9 @@ const newPostCaptionInput = newPostModal.querySelector("#caption");
 const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
 const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
 
-const confirmationModal = document.querySelector("#confirmation-modal");
+const confirmModal = document.querySelector("#confirmation-modal");
+const deleteForm = document.forms["confirmation-form"];
+const confirmCancelButton = confirmModal.querySelector(".button__type_cancel");
 
 const cardListEl = document.querySelector(".cards__list");
 
@@ -85,6 +87,9 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+let selectedCard;
+let selectedCardId;
 
 function setProfileContent(user) {
   profileTitleEl.textContent = user.name;
@@ -125,7 +130,7 @@ function getCardElement(data) {
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__description");
   const likeBtn = cardElement.querySelector(".card__button_type_like");
-  const deleteBtn = cardElement.querySelector(".card__button_type_delete");
+  const deleteButton = cardElement.querySelector(".card__button_type_delete");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
@@ -134,10 +139,10 @@ function getCardElement(data) {
   likeBtn.addEventListener("click", () =>
     likeBtn.classList.toggle("card__button_liked")
   );
-  deleteBtn.addEventListener("click", () =>
-    confirmationModal.classList.add("modal_is-opened")
+  deleteButton.addEventListener("click", () =>
+    handleDeleteCard(cardElement, data)
   );
-  // deleteBtn.addEventListener("click", () => cardElement.remove());
+
   cardImage.addEventListener("click", () => {
     previewImageDescription.textContent = cardTitleElement.textContent;
     previewImageCardImage.src = cardImage.src;
@@ -146,6 +151,24 @@ function getCardElement(data) {
   });
 
   return cardElement;
+}
+
+function handleDeleteCard(cardElement, data) {
+  selectedCard = cardElement;
+  selectedCardId = data._id;
+  openModal(confirmModal);
+}
+
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+
+  api
+    .removeCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      closeModal(confirmModal);
+    })
+    .catch((err) => console.error(err));
 }
 
 function handleNewPostFormSubmit(evt) {
@@ -210,6 +233,8 @@ profileLargeBtn.addEventListener("click", () => {
   openModal(newPostModal);
   toggleButtonState(newPostInputs, newPostSubmitBtn, settings);
 });
+confirmCancelButton.addEventListener("click", () => closeModal(confirmModal));
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 for (const button of closeButtons) {
   const parentModal = button.closest(".modal");
