@@ -53,6 +53,14 @@ class Api {
     }).then((res) => this._processResponse(res));
   }
 
+  updateAvatar() {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(),
+    });
+  }
+
   _processResponse(response) {
     if (response.ok) {
       return response.json();

@@ -99,7 +99,15 @@ function setProfileContent(user) {
 
 api
   .getInitialCards()
-  .then((cards) => cards.forEach((card) => renderCard(card, "append")))
+  .then((cards) =>
+    cards.forEach((card) => {
+      // if (card.isLiked) {
+      //   card.classList.add("card__button_liked");
+      // }
+      console.log(card);
+      renderCard(card, "append");
+    })
+  )
   .catch((err) => console.error(err));
 
 api
@@ -135,6 +143,10 @@ function getCardElement(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitleElement.textContent = data.name;
+
+  if (data.isLiked) {
+    likeButton.classList.add("card__button_liked");
+  }
 
   likeButton.addEventListener("click", () =>
     handleLikeButtonClick(likeButton, data)
