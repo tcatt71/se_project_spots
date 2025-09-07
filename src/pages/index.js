@@ -59,17 +59,21 @@ const editProfileForm = document.forms.namedItem("edit-profile-form");
 const editProfileInputs = Array.from(
   editProfileForm.querySelectorAll(".form__input")
 );
-const editProfileSubmitBtn = editProfileForm.querySelector("[type='submit']");
+const editProfileSubmitButton =
+  editProfileForm.querySelector("[type='submit']");
 
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostForm = document.forms.namedItem("new-post-form");
 const newPostLinkInput = newPostModal.querySelector("#link");
 const newPostCaptionInput = newPostModal.querySelector("#caption");
 const newPostInputs = Array.from(newPostForm.querySelectorAll(".form__input"));
-const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
+const newPostSubmitButton = newPostModal.querySelector(
+  ".form__button_type_save"
+);
 
 const confirmModal = document.querySelector("#confirmation-modal");
 const deleteForm = document.forms["confirmation-form"];
+const confirmSubmitButton = deleteForm.querySelector(".button_type_delete");
 const confirmCancelButton = confirmModal.querySelector(".button_type_cancel");
 
 const cardListEl = document.querySelector(".cards__list");
@@ -86,8 +90,10 @@ const previewImageCardImage = previewImageModal.querySelector(".modal__image");
 
 const editAvatarModal = document.querySelector("#edit-avatar-modal");
 const editAvatarForm = document.forms["edit-avatar-form"];
-console.log(editAvatarForm);
 const editAvatarInput = editAvatarForm.elements["link"];
+const editAvatarSubmitButton = editAvatarForm.querySelector(
+  ".form__button_type_save"
+);
 
 const api = new Api({
   baseUrl: BASE_URL,
@@ -192,10 +198,13 @@ function handleDeleteCard(cardElement, data) {
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
 
+  confirmSubmitButton.textContent = "Deleting...";
+
   api
     .removeCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
+      confirmSubmitButton.textContent = "Delete";
       closeModal(confirmModal);
     })
     .catch((err) => console.error(err));
@@ -203,6 +212,8 @@ function handleDeleteSubmit(evt) {
 
 function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
+
+  newPostSubmitButton.textContent = "Saving...";
 
   const formData = {
     name: newPostCaptionInput.value,
@@ -212,13 +223,14 @@ function handleNewPostFormSubmit(evt) {
   api
     .addCard(formData)
     .then((cardData) => {
+      newPostSubmitButton.textContent = "Save";
       const cardElement = getCardElement(cardData);
       cardListEl.prepend(cardElement);
     })
     .catch((err) => console.error(err));
 
   newPostForm.reset();
-  toggleButtonState(editProfileInputs, editProfileSubmitBtn, settings);
+  toggleButtonState(editProfileInputs, editProfileSubmitButton, settings);
   closeModal(newPostModal);
 }
 
@@ -230,6 +242,8 @@ function updateTextElements(user) {
 function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
 
+  editProfileSubmitButton.textContent = "Saving...";
+
   const formData = {
     name: editProfileNameInput.value,
     about: editProfileDescriptionInput.value,
@@ -237,7 +251,10 @@ function handleEditProfileFormSubmit(evt) {
 
   api
     .editUserInfo(formData)
-    .then((user) => updateTextElements(user))
+    .then((user) => {
+      updateTextElements(user);
+      editProfileSubmitButton.textContent = "Save";
+    })
     .catch((err) => console.error(err));
 
   closeModal(editProfileModal);
@@ -260,7 +277,7 @@ profileTextBtn.addEventListener("click", () => {
 });
 profileLargeBtn.addEventListener("click", () => {
   openModal(newPostModal);
-  toggleButtonState(newPostInputs, newPostSubmitBtn, settings);
+  toggleButtonState(newPostInputs, newPostSubmitButton, settings);
 });
 confirmCancelButton.addEventListener("click", () => closeModal(confirmModal));
 deleteForm.addEventListener("submit", handleDeleteSubmit);
@@ -269,12 +286,17 @@ profileEditAvatarButton.addEventListener("click", () =>
 );
 editAvatarForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
+
+  editAvatarSubmitButton.textContent = "Saving...";
+
   const formData = { avatar: editAvatarInput.value };
 
   api
     .updateAvatar(formData)
     .then((user) => {
       profileAvatarImg.src = user.avatar;
+      editAvatarSubmitButton.textContent = "Save";
+
       closeModal(editAvatarModal);
     })
     .catch((err) => console.error(err));
