@@ -41,11 +41,15 @@ import { API_KEY, BASE_URL } from "../utils/constants.js";
 
 const modalList = document.querySelectorAll(".modal");
 
+const profile = document.querySelector(".profile");
 const profileAvatarImg = document.querySelector(".profile__avatar");
 const profileTitleEl = document.querySelector(".profile__title");
 const profileDescriptionEl = document.querySelector(".profile__description");
 const profileTextBtn = document.querySelector(".profile__button_type_text");
 const profileLargeBtn = document.querySelector(".profile__button_type_large");
+const profileEditAvatarButton = profile.querySelector(
+  ".button_type_edit-avatar"
+);
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileNameInput = editProfileModal.querySelector("#name");
@@ -66,7 +70,7 @@ const newPostSubmitBtn = newPostModal.querySelector(".form__button_type_save");
 
 const confirmModal = document.querySelector("#confirmation-modal");
 const deleteForm = document.forms["confirmation-form"];
-const confirmCancelButton = confirmModal.querySelector(".button__type_cancel");
+const confirmCancelButton = confirmModal.querySelector(".button_type_cancel");
 
 const cardListEl = document.querySelector(".cards__list");
 
@@ -79,6 +83,11 @@ const previewImageDescription = previewImageModal.querySelector(
   ".modal__description"
 );
 const previewImageCardImage = previewImageModal.querySelector(".modal__image");
+
+const editAvatarModal = document.querySelector("#edit-avatar-modal");
+const editAvatarForm = document.forms["edit-avatar-form"];
+console.log(editAvatarForm);
+const editAvatarInput = editAvatarForm.elements["link"];
 
 const api = new Api({
   baseUrl: BASE_URL,
@@ -101,10 +110,6 @@ api
   .getInitialCards()
   .then((cards) =>
     cards.forEach((card) => {
-      // if (card.isLiked) {
-      //   card.classList.add("card__button_liked");
-      // }
-      console.log(card);
       renderCard(card, "append");
     })
   )
@@ -259,6 +264,21 @@ profileLargeBtn.addEventListener("click", () => {
 });
 confirmCancelButton.addEventListener("click", () => closeModal(confirmModal));
 deleteForm.addEventListener("submit", handleDeleteSubmit);
+profileEditAvatarButton.addEventListener("click", () =>
+  openModal(editAvatarModal)
+);
+editAvatarForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const formData = { avatar: editAvatarInput.value };
+
+  api
+    .updateAvatar(formData)
+    .then((user) => {
+      profileAvatarImg.src = user.avatar;
+      closeModal(editAvatarModal);
+    })
+    .catch((err) => console.error(err));
+});
 
 for (const button of closeButtons) {
   const parentModal = button.closest(".modal");
