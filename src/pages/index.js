@@ -8,44 +8,13 @@ import {
 import Api from "../utils/Api.js";
 import { API_KEY, BASE_URL } from "../utils/constants.js";
 
-// const initialCards = [
-//   {
-//     name: "Golden Gate bridge",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-//   },
-//   {
-//     name: "Val Thorens",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-//   },
-//   {
-//     name: "Restaurant terrace",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-//   },
-//   {
-//     name: "An outdoor cafe",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-//   },
-//   {
-//     name: "A very long bridge, over the forest and through the trees",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-//   },
-//   {
-//     name: "Tunnel with morning light",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-//   },
-//   {
-//     name: "Mountain house",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-//   },
-// ];
-
 const modalList = document.querySelectorAll(".modal");
 
 const profile = document.querySelector(".profile");
 const profileAvatarImg = document.querySelector(".profile__avatar");
 const profileTitleEl = document.querySelector(".profile__title");
 const profileDescriptionEl = document.querySelector(".profile__description");
-const profileTextBtn = document.querySelector(".profile__button_type_text");
+const profileEditButton = document.querySelector(".button_type_text");
 const profileLargeBtn = document.querySelector(".profile__button_type_large");
 const profileEditAvatarButton = profile.querySelector(
   ".button_type_edit-avatar"
@@ -267,7 +236,7 @@ function renderCard(card, method) {
 
 newPostForm.addEventListener("submit", handleNewPostFormSubmit);
 editProfileForm.addEventListener("submit", handleEditProfileFormSubmit);
-profileTextBtn.addEventListener("click", () => {
+profileEditButton.addEventListener("click", () => {
   openModal(editProfileModal);
   editProfileNameInput.value = profileTitleEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;

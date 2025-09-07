@@ -10,6 +10,26 @@
   display: inline-block;
 }
 
+.button_type_cancel {
+  background-color: #fff;
+  padding: 17px 48.5px;
+  border: 1px solid #212121;
+}
+
+.button_type_cancel:hover {
+  color: #fff;
+  background-color: #212121;
+}
+
+.button_type_delete {
+  background-color: #ff6565;
+  padding: 18px 52.5px;
+}
+
+.button_type_delete:hover {
+  background-color: #ff3333;
+}
+
 .button_type_edit-avatar {
   position: absolute;
   top: 0;
@@ -40,24 +60,24 @@
   filter: brightness(0) invert(1);
 }
 
-.button_type_delete {
-  background-color: #ff6565;
-  padding: 18px 52.5px;
+.button_type_text {
+  display: flex;
+  background-color: transparent;
+  opacity: 0.7;
+  padding: 0;
+  margin: auto 0 0 0;
 }
 
-.button_type_delete:hover {
-  background-color: #ff3333;
+.button_type_text:hover {
+  opacity: 1;
 }
 
-.button_type_cancel {
-  background-color: #fff;
-  padding: 17px 48.5px;
-  border: 1px solid #212121;
-}
-
-.button_type_cancel:hover {
-  color: #fff;
-  background-color: #212121;
+.button_type_text::before {
+  content: "";
+  background-image: url("../images/edit.svg");
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }
 
 @media screen and (max-width: 892px) {
