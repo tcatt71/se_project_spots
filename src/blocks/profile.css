@@ -50,22 +50,24 @@
   margin: 0;
 }
 
-.profile__button {
-  display: flex;
-  gap: 8px;
-  font-weight: 500;
-  line-height: 1;
-  border: none;
-  cursor: pointer;
-}
-
 .profile__button_type_large {
-  align-items: flex-start;
+  display: flex;
+  align-items: center;
   align-self: flex-end;
   background-color: #212121;
   color: #fcf5e5;
   padding: 18px 32px;
   border-radius: 8px;
+}
+
+.profile__button_type_large::before {
+  display: inline-block;
+  content: "";
+  background-image: url("../images/new-post.svg");
+  background-position: center;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
 }
 
 .profile__button_type_large:hover {

@@ -148,12 +148,12 @@ function handleLikeButtonClick(card, data) {
   if (card.classList.contains("card__button_liked")) {
     api
       .unlikeCard(data._id)
-      .then(() => card.classList.remove("card__button_liked"))
+      .then(() => card.classList.toggle("card__button_liked"))
       .catch((err) => console.error(err));
   } else {
     api
       .likeCard(data._id)
-      .then(() => card.classList.add("card__button_liked"))
+      .then(() => card.classList.toggle("card__button_liked"))
       .catch((err) => console.error(err));
   }
 }

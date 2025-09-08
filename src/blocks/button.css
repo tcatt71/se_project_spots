@@ -1,8 +1,8 @@
 .button {
   font-weight: 500;
   line-height: 1;
+  padding: 0;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -14,6 +14,7 @@
   background-color: #fff;
   padding: 17px 48.5px;
   border: 1px solid #212121;
+  border-radius: 8px;
 }
 
 .button_type_cancel:hover {
@@ -24,6 +25,7 @@
 .button_type_delete {
   background-color: #ff6565;
   padding: 18px 52.5px;
+  border-radius: 8px;
 }
 
 .button_type_delete:hover {
@@ -39,8 +41,10 @@
   align-items: flex-end;
   width: 190px;
   height: 190px;
-  background-color: transparent;
+  color: #fff;
+  background-color: #00000080;
   padding-bottom: 12px;
+  opacity: 0;
 }
 
 .button_type_edit-avatar::before {
@@ -52,8 +56,7 @@
 }
 
 .button_type_edit-avatar:hover {
-  background-color: #00000080;
-  color: #fff;
+  opacity: 1;
 }
 
 .button_type_edit-avatar:hover::before {
@@ -98,9 +101,9 @@
     align-items: center;
     width: 23px;
     height: 23px;
-    background-color: #00000080;
     padding: 0;
     border-radius: 4px;
+    opacity: 1;
   }
 
   .button_type_edit-avatar::before {
