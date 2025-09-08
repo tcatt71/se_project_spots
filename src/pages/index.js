@@ -199,7 +199,7 @@ function handleNewPostFormSubmit(evt) {
     .catch((err) => console.error(err));
 
   newPostForm.reset();
-  toggleButtonState(editProfileInputs, editProfileSubmitButton, settings);
+  toggleButtonState(newPostInputs, newPostSubmitButton, settings);
   closeModal(newPostModal);
 }
 
