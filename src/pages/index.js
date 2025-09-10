@@ -59,6 +59,9 @@ const previewImageCardImage = previewImageModal.querySelector(".modal__image");
 
 const editAvatarModal = document.querySelector("#edit-avatar-modal");
 const editAvatarForm = document.forms["edit-avatar-form"];
+const editAvatarInputs = Array.from(
+  editAvatarForm.querySelectorAll(".form__input")
+);
 const editAvatarInput = editAvatarForm.elements["link"];
 const editAvatarSubmitButton = editAvatarForm.querySelector(
   ".form__button_type_save"
@@ -262,6 +265,8 @@ editAvatarForm.addEventListener("submit", (evt) => {
     .updateAvatar(formData)
     .then((user) => {
       profileAvatarImg.src = user.avatar;
+      editAvatarForm.reset();
+      toggleButtonState(editAvatarInputs, editAvatarSubmitButton, settings);
       closeModal(editAvatarModal);
     })
     .catch((err) => console.error(err))
