@@ -99,6 +99,48 @@
         </div>
       </div>
 
+      <div class="modal" id="confirmation-modal">
+        <div class="modal__container modal__container_type_confirmation">
+          <button type="button" class="modal__close-button"></button>
+          <p class="modal__text">Are you sure you want to delete this image?</p>
+          <div class="modal__buttons-container">
+            <form class="form form_confirmation" id="confirmation-form">
+              <button class="button button_type_delete" type="submit">
+                Delete
+              </button>
+            </form>
+            <button class="button button_type_cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="edit-avatar-modal">
+        <div class="modal__container modal__container_type_form">
+          <form id="edit-avatar-form" class="form">
+            <button
+              class="form__button form__button_type_close"
+              type="button"
+            ></button>
+            <fieldset class="form__fieldset">
+              <legend class="form__title">Edit profile avatar</legend>
+              <label for="link" class="form__label">Profile Picture</label>
+              <input
+                type="url"
+                name="link"
+                id="link"
+                class="form__input"
+                placeholder="Paste the link to an image"
+                required
+              />
+              <p class="form__error-msg name-error"></p>
+            </fieldset>
+            <button class="form__button form__button_type_save" type="submit">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+
       <header class="header">
         <img
           src="<%=require('./images/logo.svg')%>"
@@ -109,36 +151,25 @@
 
       <main class="content">
         <section class="profile">
-          <div class="profile__avatar-section">
+          <div class="profile__user-info">
             <img
               src="<%=require('./images/avatar.jpg')%>"
               alt="Bessie Coleman"
               class="profile__avatar"
             />
-            <div class="profile__content">
-              <h1 class="profile__title">Bessie Coleman</h1>
-              <p class="profile__description">Civil Aviator</p>
-              <button
-                type="button"
-                class="profile__button profile__button_type_text"
-              >
-                <img
-                  src="<%=require('./images/edit-profile.svg')%>"
-                  alt="Edit profile icon"
-                />
+            <button class="button button_type_edit-avatar">
+              <span class="button__text">Edit Avatar</span>
+            </button>
+            <div class="profile__container">
+              <h1 class="profile__title"></h1>
+              <p class="profile__description"></p>
+              <button type="button" class="button button_type_text">
                 Edit Profile
               </button>
             </div>
           </div>
-          <button
-            type="button"
-            class="profile__button profile__button_type_large"
-          >
-            <img
-              src="<%=require('./images/new-post.svg')%>"
-              alt="New post button icon"
-              class="profile__button-icon"
-            />New Post
+          <button type="button" class="button profile__button_type_large">
+            New Post
           </button>
         </section>
 
