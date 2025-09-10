@@ -173,10 +173,10 @@ function handleDeleteSubmit(evt) {
     .removeCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
-      confirmSubmitButton.textContent = "Delete";
       closeModal(confirmModal);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
+    .finally(() => (confirmSubmitButton.textContent = "Delete"));
 }
 
 function handleNewPostFormSubmit(evt) {
@@ -192,11 +192,11 @@ function handleNewPostFormSubmit(evt) {
   api
     .addCard(formData)
     .then((cardData) => {
-      newPostSubmitButton.textContent = "Save";
       const cardElement = getCardElement(cardData);
       cardListEl.prepend(cardElement);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
+    .finally(() => (newPostSubmitButton.textContent = "Save"));
 
   newPostForm.reset();
   toggleButtonState(newPostInputs, newPostSubmitButton, settings);
@@ -220,11 +220,9 @@ function handleEditProfileFormSubmit(evt) {
 
   api
     .editUserInfo(formData)
-    .then((user) => {
-      updateTextElements(user);
-      editProfileSubmitButton.textContent = "Save";
-    })
-    .catch((err) => console.error(err));
+    .then((user) => updateTextElements(user))
+    .catch((err) => console.error(err))
+    .finally(() => (editProfileSubmitButton.textContent = "Save"));
 
   closeModal(editProfileModal);
 }
@@ -264,11 +262,10 @@ editAvatarForm.addEventListener("submit", (evt) => {
     .updateAvatar(formData)
     .then((user) => {
       profileAvatarImg.src = user.avatar;
-      editAvatarSubmitButton.textContent = "Save";
-
       closeModal(editAvatarModal);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
+    .finally(() => (editAvatarSubmitButton.textContent = "Save"));
 });
 
 for (const button of closeButtons) {
